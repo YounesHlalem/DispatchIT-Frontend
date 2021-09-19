@@ -1,0 +1,109 @@
+﻿@model MultiEntitiesModel
+@{
+    ViewData["Title"] = "Edit Delivery";
+}
+
+<h1>Edit Delivery</h1>
+@if (Model == null)
+{
+    <h2 class="display-4" style="padding-top: 40px">No item was found!</h2>
+}
+else
+{
+    @Html.ActionLink("Delete Delivery >", "DeleteDelivery", "Company", new { DeliveryId = Model.Deliveryrequest.deliveryId })
+    <br />
+
+    @using (Html.BeginForm("PutDelivery", "Company", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <h2>Info</h2>
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Deliveryrequest.companyId, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Deliveryrequest.companyId, new { @Value = Model.Deliveryrequest.companyId, @readonly = "true" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Deliveryrequest.creationDatetime, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Deliveryrequest.creationDatetime, new { @Value = Model.Deliveryrequest.creationDatetime, @readonly = "true" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Deliveryrequest.pickupAddressId, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Deliveryrequest.pickupAddressId, Model.ListItems.ToList(), "Select pickup address")
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Deliveryrequest.title, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Deliveryrequest.title, new { @Value = Model.Deliveryrequest.title, @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Deliveryrequest.packetDimensions, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Deliveryrequest.packetDimensions, new { @Value = Model.Deliveryrequest.packetDimensions, @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Deliveryrequest.description, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Deliveryrequest.description, new { @Value = Model.Deliveryrequest.description, @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Deliveryrequest.additionalInstructions, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Deliveryrequest.additionalInstructions, new { @Value = Model.Deliveryrequest.additionalInstructions, @class = "form-control" })
+            </div>
+        </div>
+
+        <h2>Delivery address</h2>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DeliveryAddress.Country, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.DeliveryAddress.Country, new { @Value = Model.DeliveryAddress.Country, @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DeliveryAddress.Zipcode, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.DeliveryAddress.Zipcode, new { @Value = Model.DeliveryAddress.Zipcode, @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DeliveryAddress.City, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.DeliveryAddress.City, new { @Value = Model.DeliveryAddress.City, @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DeliveryAddress.Streetname, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.DeliveryAddress.Streetname, new { @Value = Model.DeliveryAddress.Streetname, @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DeliveryAddress.Number, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.DeliveryAddress.Number, new { @Value = Model.DeliveryAddress.Number, @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DeliveryAddress.Addition, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.DeliveryAddress.Addition, new { @Value = Model.DeliveryAddress.Addition, @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Edit" />
+            </div>
+        </div>
+    }
+}

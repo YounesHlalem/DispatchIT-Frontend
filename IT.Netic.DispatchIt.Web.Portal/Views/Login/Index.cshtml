@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DispatchIT</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+    <div class="splash">
+        <div class="splash-title">
+            <h1 class="splash-head">DispatchIT</h1>
+            <p class="splash-subhead">
+                Welcome to the DispatchIT webportal!
+            </p>
+        </div>
+        <p>
+            <a asp-area="" asp-controller="Home" asp-action="Index">Login</a>
+        </p>
+    </div>
+
+    <footer>
+        <div class="content">
+            <p>&copy; 2021 - DispatchIT</p>
+            <p>Created by: Younes Hlalem & James Stoels</p>
+        </div>
+        <div class="content" style="text-align: right;">
+            <a href="https://integration.team/">
+                <img alt="Integration.team" src="https://integration.team/wp-content/uploads/2019/05/logo_integrationteam.png">
+            </a>
+            <p>&copy; 2019 Integration.team</p>
+        </div>
+    </footer>
+</body>
+</html>

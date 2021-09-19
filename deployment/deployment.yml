@@ -1,0 +1,37 @@
+name: DispatchIt-Web-Portal.$(Rev:r)
+trigger:
+  branches:
+    include:
+      - master
+      - development
+variables:
+  solutionDirectory: $(Build.SourcesDirectory)/IT.Netic.DispatchIt.Web
+  Release.ReleaseName: $(Build.BuildNumber)
+  Release.ReleaseWebUrl: $(System.TeamFoundationCollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=results
+  Release.SourceCodeBranch: $(Build.SourceBranch)
+  Release.Deployment.RequestedFor: $(Build.RequestedFor)
+  Release.Reason: $(Build.Reason)
+stages:
+  - stage: Build
+    displayName: Build
+    jobs:
+      - template: templates/build.yml
+  - stage: DEV
+    displayName: DEV
+    dependsOn: [Build]
+    condition: succeeded('Build')
+    variables:
+        - template: library/IT.Netic.DispatchIt.Settings.Dev.yml
+    jobs:
+      - deployment: DEV
+        displayName: DEV
+        pool:
+          vmImage: "windows-latest"
+        environment: DEV
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: templates/release.yml 
+                  parameters:
+                    AzureSubscription: AzureIntegrationTeam

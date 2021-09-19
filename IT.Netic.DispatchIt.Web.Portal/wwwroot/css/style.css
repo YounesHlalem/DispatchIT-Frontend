@@ -1,0 +1,97 @@
+﻿body {
+    color: #273582;
+    font-family: 'Segoe UI';
+    font-weight: 500;
+}
+
+.splash {
+    width: 80%;
+    height: 50%;
+    margin: auto;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    text-transform: none;
+}
+
+.splash-title {
+    background: #f2f2fc;
+    padding: 2.5em;
+    margin-bottom: 3em;
+    border-radius: 15px;
+}
+
+.splash-head {
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid #273582;
+    padding: 1em 1.6em;
+    font-weight: 100;
+    border-radius: 5px;
+    line-height: 1em;
+}
+
+.splash-subhead {
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+.splash a {
+    padding: 1em 2.8em;
+    border-radius: 30px;
+    color: white;
+    background: #273582;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+nav.bg-disp{
+    color: #273582;
+    background: #f2f2fc;
+}
+
+footer {
+    min-height: 5rem;
+    background: #f2f2fc;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: auto;
+    font-size: small;
+    padding: 1em;
+}
+
+footer .content {
+    float: left;
+    width: 47%;
+}
+
+footer img{
+    width: 150px;
+    height: 35px;
+}
+
+@media (min-width: 48em) {
+    body {
+        font-size: 16px;
+    }
+
+    .splash {
+        width: 50%;
+        height: 50%;
+    }
+
+    .splash-head {
+        font-size: 250%;
+    }
+}
+
+@media (min-width: 78em) {
+    .splash-head {
+        font-size: 300%;
+    }
+}

@@ -1,0 +1,28 @@
+parameters:
+  AzureSubscription: ''
+steps:
+#### Disable automatic artifact download ####
+- download: none
+#### Download DispatchItPortal Build artifact ####
+- task: DownloadBuildArtifacts@0
+  displayName: 'Download build artifacts'
+  inputs:
+    buildType: 'current'
+    downloadType: 'specific'
+    downloadPath: '$(System.DefaultWorkingDirectory)/_DispatchItPortalArtifact'
+#### Release code to Azure Web App ####
+- task: AzureRmWebAppDeployment@4
+  displayName: Deploy Portal Build to Azure Web App
+  inputs:
+    azureSubscription: ${{ parameters.AzureSubscription }}
+    appType: webApp
+    WebAppName: $(DispatchIt.Web.Portal.WebAppName)
+    DeploymentType: zipDeploy
+    Package: $(System.DefaultWorkingDirectory)/_DispatchItPortalArtifact/DispatchItPortal/*.zip
+    AppSettings: |
+        -AzureAd__Instance $(Settings.Ad.Instance) 
+        -AzureAd__TenantId $(Settings.Ad.TenantId) 
+        -AzureAd__ClientId $(Settings.Ad.ClientId) 
+        -AzureAd__ClientSecret $(Settings.Ad.ClientSecret) 
+        -AzureAd__CallbackPath $(Settings.Ad.CallbackPath) 
+        -AzureAd__SignedOutCallbackPath $(Settings.Ad.SignedOutCallbackPath) 

@@ -1,0 +1,50 @@
+﻿@model IT.Netic.DispatchIt.Web.Backend.DataContracts.BaseDto.CompanyBaseDto
+@{
+    ViewData["Title"] = "Company";
+}
+
+@if (Model == null)
+{
+    <h2 class="display-4" style="padding-top: 40px">No company chosen!</h2>
+}
+else
+{
+    @Html.ActionLink("Edit company details >", "EditCompany", "Company", new { CompanyId = Model.CompanyId })
+    <br />
+
+    <h1 class="display-4" style="padding-top: 40px">Company overview: </h1>
+
+    <table class="table" style="padding-top: 30px">
+        <tr>
+            <th scope="col">Companyname</th>
+            <th scope="col">VAT number</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Email</th>
+            <th scope="col">Addresses</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.VatNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.PhoneNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Email)
+            </td>
+            <td>
+                <ul>
+                    @foreach (var ad in Model.addresses)
+                    {
+                        <li>@Html.DisplayFor(modelItem => ad.Zipcode) @Html.DisplayFor(modelItem => ad.City), @Html.DisplayFor(modelItem => ad.Streetname) @Html.DisplayFor(modelItem => ad.Number)@Html.DisplayFor(modelItem => ad.Addition) in @Html.DisplayFor(modelItem => ad.Country)</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    @Html.ActionLink("Add a new Address", "AddAddress", "Company", new { CompanyId = Model.CompanyId })
+}

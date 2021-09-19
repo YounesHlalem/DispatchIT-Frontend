@@ -1,0 +1,32 @@
+﻿@model IEnumerable<IT.Netic.DispatchIt.Web.Backend.DataContracts.BaseDto.MessageDto>
+@{
+    ViewData["Title"] = "Message list";
+}
+
+@if (Model == null)
+{
+    <h2 class="display-4" style="padding-top: 40px">There are no messages!</h2>
+}
+else
+{
+<h1 class="display-4" style="padding-top: 40px">Messages:</h1>
+    <table class="table" style="padding-top: 30px">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.Title)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Content)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.CreationDate)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Content)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CreationDate)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

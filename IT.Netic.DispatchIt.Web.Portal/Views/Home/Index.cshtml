@@ -1,0 +1,59 @@
+﻿@model IEnumerable<IT.Netic.DispatchIt.Web.Backend.DataContracts.BaseDto.DeliveryrequestBaseDto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (Model == null)
+{
+    <div class="d-flex justify-content-center align-items-center" style="height:450px;">
+        <div class="text-center">
+            <h1 class="display-4">Welcome to DispatchIT</h1>
+            <h3>You have no active deliveries.</h3>
+            <br />
+            <a class="navbar-brand" asp-area="" asp-controller="Company" asp-action="CompanyIndex">Go to my companies to add ></a>
+        </div>
+    </div>
+}
+else
+{
+    <h1 class="display-4" style="padding-top: 40px">Delivery requests:</h1>
+    <table class="table" style="padding-top: 30px">
+        <thead>
+            <tr>
+                <th scope="col">Status</th>
+                <th scope="col">Delivery title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Packet dimensions</th>
+                <th scope="col">Creation date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @if (item.status == "Open")
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.status)</td>
+                        <td>@Html.DisplayFor(modelItem => item.title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.packetDimensions)</td>
+                        <td>@Html.DisplayFor(modelItem => item.creationDatetime)</td>
+                    </tr>
+                }
+            }
+            @foreach (var item in Model)
+            {
+                @if (item.status != "Open")
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.status)</td>
+                        <td>@Html.DisplayFor(modelItem => item.title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.packetDimensions)</td>
+                        <td>@Html.DisplayFor(modelItem => item.creationDatetime)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}

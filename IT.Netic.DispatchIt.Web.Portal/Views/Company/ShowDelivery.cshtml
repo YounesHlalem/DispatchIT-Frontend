@@ -1,0 +1,133 @@
+﻿@model IT.Netic.DispatchIt.Web.Backend.DataContracts.BaseDto.DeliveryrequestBaseDto
+@{
+    ViewData["Title"] = "Deliveryrequest";
+}
+
+@section HeaderScripts
+{
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <style type="text/css">
+        #map {
+            height: 500px;
+        }
+    </style>
+    <script>
+        function initMap() {
+            const myLatLng = { lat: @Model.progress.latitude, lng: @Model.progress.longitude };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8,
+                center: myLatLng,
+            });
+            new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: "Package Location",
+            });
+        }
+    </script>
+}
+
+@if (Model == null)
+{
+    <h2 class="display-4" style="padding-top: 40px">No item was found!</h2>
+}
+else
+{
+    <h1 class="display-4" style="padding-top: 40px">Delivery request:</h1>
+    <table class="table" style="padding-top: 30px">
+        <tr>
+            <th>
+                Created on:
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Packet dimensions
+            </th>
+            <th>
+                Additional instructions
+            </th>
+
+            @if (Model.status == "Open" || Model.status == "Pending")
+            {
+                <th>
+                    Expected pickup-time
+                </th>
+                <th>
+                    Expected delivery-time
+                </th>
+            }
+            else
+            {
+                <th>
+                    Actual pickup-time
+                </th>
+                <th>
+                    Actual delivery-time
+                </th>
+            }
+            <th>
+                Delivery Address
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.creationDatetime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.packetDimensions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.additionalInstructions)
+            </td>
+
+            @if (Model.status == "Open" || Model.status == "Pending")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => Model.expectedpickup)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.expecteddelivery)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => Model.progress.actualPickupTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.progress.actualDeliveryTime)
+                </td>
+            }
+
+            <td>
+                <p>
+                    @Html.DisplayFor(modelItem => Model.deliveryAddress.Zipcode) @Html.DisplayFor(modelItem => Model.deliveryAddress.City), @Html.DisplayFor(modelItem => Model.deliveryAddress.Streetname) @Html.DisplayFor(modelItem => Model.deliveryAddress.Number)@Html.DisplayFor(modelItem => Model.deliveryAddress.Addition) in @Html.DisplayFor(modelItem => Model.deliveryAddress.Country)
+                </p>
+            <td>
+        </tr>
+    </table>
+
+    <div id="map"></div>
+
+    @section Scripts
+    {
+        <script src="https://maps.googleapis.com/maps/api/APIKEYHERE&callback=initMap&libraries=&v=weekly" async></script>
+    }
+}

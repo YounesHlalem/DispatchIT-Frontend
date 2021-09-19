@@ -1,0 +1,41 @@
+﻿@model IEnumerable<IT.Netic.DispatchIt.Web.Backend.DataContracts.BaseDto.CompanyBaseDto>
+@{
+    ViewData["Title"] = "Company information";
+}
+
+@if (Model == null)
+{
+    <h2 class="display-4" style="padding-top: 40px">There are no companies registered under your name!</h2>
+}
+else
+{
+    <h1 class="display-4" style="padding-top: 40px">Companies:</h1>
+    <table class="table" style="padding-top: 30px">
+        <thead>
+            <tr>
+                <th scope="col">Companyname</th>
+                <th scope="col">VAT number</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.VatNr)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                </tr>
+                <tr>
+                    <td>@Html.ActionLink("View Company details", "ShowCompany", "Company", new { CompanyId = item.CompanyId })</td>
+                    <td></td>
+                    <td>@Html.ActionLink("View all deliveries", "ShowDeliveries", "Company", new { CompanyId = item.CompanyId })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<div class="container">
+    <a class="navbar-brand" asp-area="" asp-controller="Company" asp-action="AddCompany">Add company</a>
+</div>

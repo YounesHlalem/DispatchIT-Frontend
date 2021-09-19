@@ -1,0 +1,9 @@
+variables:
+  DispatchIt.Web.Portal.WebAppName: 'dev-weu-itt-wap-dispatchit-webportal'
+  Settings.Ad.Instance: 'https://login.microsoftonline.com/'
+  Settings.Ad.TenantId: '-'
+  Settings.Ad.ClientId: '-'
+  Settings.Ad.ClientSecret: '-'
+  Settings.Ad.Domain: ''
+  Settings.Ad.CallbackPath: '/signin-oidc'
+  Settings.Ad.SignedOutCallbackPath: '/signout-oidc'

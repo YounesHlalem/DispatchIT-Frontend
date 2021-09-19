@@ -1,0 +1,52 @@
+﻿@model IEnumerable<IT.Netic.DispatchIt.Web.Backend.DataContracts.BaseDto.DeliveryrequestBaseDto>
+@{
+    ViewData["Title"] = "Deliveryrequests";
+}
+
+@if (Model == null)
+{
+    <h2 class="display-4" style="padding-top: 40px">There are no deliveryrequests!</h2>
+}
+else
+{
+    <h1 class="display-4" style="padding-top: 40px">Delivery requests:</h1>
+    <table class="table" style="padding-top: 30px">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Creation date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Packet dimensions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.creationDatetime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.packetDimensions)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.ActionLink("View details", "ShowDelivery", "Company", new { DeliveryId = item.deliveryId })</td>
+
+                @if (item.status.ToLower() == "open")
+                {
+                    <td></td>
+                    <td>@Html.ActionLink("Edit delivery >", "EditDelivery", "Company", new { DeliveryId = item.deliveryId })</td>
+                }
+            </tr>
+        }
+    </table>
+}
+
+<div class="container">
+    <a class="navbar-brand" asp-area="" asp-controller="Company" asp-action="AddDeliveryreq">Create a new delivery request</a>
+</div>

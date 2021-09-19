@@ -1,0 +1,96 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Younes\\Desktop\\Projects\\1. DispatchIT\\IT.Netic.DispatchIt.Web\\IT.Netic.DispatchIt.Web.Portal\\IT.Netic.DispatchIt.Web.Portal.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Younes\\Desktop\\Projects\\1. DispatchIT\\IT.Netic.DispatchIt.Web\\IT.Netic.DispatchIt.Web.Portal\\IT.Netic.DispatchIt.Web.Portal.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Younes\\Desktop\\Projects\\1. DispatchIT\\IT.Netic.DispatchIt.Web\\IT.Netic.DispatchIt.Web.Portal\\IT.Netic.DispatchIt.Web.Portal.csproj",
+        "projectName": "IT.Netic.DispatchIt.Web.Portal",
+        "projectPath": "C:\\Users\\Younes\\Desktop\\Projects\\1. DispatchIT\\IT.Netic.DispatchIt.Web\\IT.Netic.DispatchIt.Web.Portal\\IT.Netic.DispatchIt.Web.Portal.csproj",
+        "packagesPath": "C:\\Users\\Younes\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Younes\\Desktop\\Projects\\1. DispatchIT\\IT.Netic.DispatchIt.Web\\IT.Netic.DispatchIt.Web.Portal\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Younes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\Younes\\Desktop\\Projects\\1. DispatchIT\\IT.Netic.DispatchIt.Web.Backend\\IT.Netic.DispatchIt.Web.Backend.DataContracts\\IT.Netic.DispatchIt.Web.Backend.DataContracts.csproj": {
+                "projectPath": "C:\\Users\\Younes\\Desktop\\Projects\\1. DispatchIT\\IT.Netic.DispatchIt.Web.Backend\\IT.Netic.DispatchIt.Web.Backend.DataContracts\\IT.Netic.DispatchIt.Web.Backend.DataContracts.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Identity.Client": {
+              "target": "Package",
+              "version": "[4.30.1, )"
+            },
+            "Microsoft.Identity.Web": {
+              "target": "Package",
+              "version": "[1.8.0, )"
+            },
+            "Microsoft.Identity.Web.UI": {
+              "target": "Package",
+              "version": "[1.8.0, )"
+            },
+            "Microsoft.IdentityModel.Clients.ActiveDirectory": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.13, 3.1.13]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+jobs:
+  - job: DispatchIt_Web_Portal_Build
+    pool:
+      vmImage: "windows-latest"
+    steps:
+      #### Build portal project ####
+      - task: DotNetCoreCLI@2
+        displayName: "DispatchIt.Web.Portal - dotnet restore"
+        inputs:
+          command: "restore"
+          projects: "$(solutionDirectory)/IT.Netic.DispatchIt.Web.Portal/IT.Netic.DispatchIt.Web.Portal.csproj"
+      - task: MSBuild@1
+        displayName: "DispatchIt.Web.Portal - Build"
+        inputs:
+          solution: $(solutionDirectory)/IT.Netic.DispatchIt.Web.Portal/IT.Netic.DispatchIt.Web.Portal.csproj
+          msbuildLocationMethod: "version"
+          msbuildVersion: "latest"
+          msbuildArchitecture: "x86"
+          msbuildArguments: "/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=$(Build.ArtifactStagingDirectory)/Portal_build"
+      #### Copy & Publish Build Artifacts ####
+      - task: CopyFiles@2
+        displayName: "DispatchIt.Web.Portal - Copy zip file"
+        inputs:
+          sourceFolder: "$(Build.ArtifactStagingDirectory)/Portal_build"
+          contents: "*.zip"
+          targetFolder: "$(Build.ArtifactStagingDirectory)/DispatchItPortal"
+          flattenFolders: true
+      - task: PublishBuildArtifacts@1
+        displayName: "DispatchIt.Web.Portal - Publish Artifact"
+        inputs:
+          pathtoPublish: "$(Build.ArtifactStagingDirectory)/DispatchItPortal"
+          artifactName: "DispatchItPortal"
+          publishLocation: "Container"
